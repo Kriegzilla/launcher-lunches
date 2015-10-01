@@ -30,7 +30,9 @@
           </div>
         </div>
       </div>
-
+      <% @lunch.users.each do |user| %>
+      <li><%= user.email %> </li>
+      <% end %>
 <br>
 <br>
 <br>
