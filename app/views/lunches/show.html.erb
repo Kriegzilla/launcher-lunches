@@ -2,7 +2,7 @@
 <div class="search-results">
       <div class="row ">
         <div class="large-10 columns">
-          <div class="row">
+          <div class="row panel">
             <div class=" large-9 columns">
               <h5><a href="#">  <%=@lunch.name%>  </a></h5>
               <p><%= @lunch.date.strftime("%A, %m/%d ") %> | <%= @lunch.time.strftime("Meet at the door at %l:%M%p")%></p>
@@ -30,11 +30,12 @@
           </div>
         </div>
       </div>
-      <% @lunch.users.each do |user| %>
+    <% @lunch.users.each do |user| %>
       <li><%= user.email %> </li>
-      <% end %>
+    <% end %>
 <br>
-<br>
-<br>
-
-<%= link_to "List of Lunches", lunches_path %>
+<div class='row text-center'>
+  <div class="large-10 columns">
+    <%= link_to "List of Lunches", lunches_path, class: 'button success expand' %>
+</div>
+</div>
