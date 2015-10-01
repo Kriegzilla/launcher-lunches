@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
       flash[:notice] =  'Lunch joined!'
       redirect_to lunches_path
     else
-      flash[:notice] =  'PROBLEM.'
+      flash[:alert] = @group.errors.full_messages.join(", ")
       redirect_to lunches_path
     end
   end
