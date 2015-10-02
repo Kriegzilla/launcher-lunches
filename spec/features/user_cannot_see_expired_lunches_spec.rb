@@ -8,7 +8,6 @@ feature 'expire lunches', %{
   # Acceptance Criteria
   # [] Lunches index page displays lunches
   # [] Lunches index page does not display lunches that have past
-  # [] Lunches index page displays lunches ordered by most recent
   scenario 'user looks for lunches on the lunches index page' do
     lunch = FactoryGirl.create(:lunch)
 
@@ -16,10 +15,11 @@ feature 'expire lunches', %{
     expect(page).to have_content(lunch.name)
   end
 
-  scenario 'user only sees current lunches on index page'
+  scenario 'user only sees current lunches on index page' do
     lunch1 = FactoryGirl.create(:lunch)
     lunch2 = FactoryGirl.create(:lunch)
-    lunch2.date - 10
+    lunch2.date -= 2
+    lunch2.save
 
     visit lunches_path
     expect(page).to have_content(lunch1.name)
