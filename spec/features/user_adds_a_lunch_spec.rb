@@ -10,6 +10,17 @@ feature 'add a lunch', %{
   # [] An authenticated user can create a new lunch
   # [] The new lunch appears on the lunch's show page
 
+  def form_fill(lunch)
+    fill_in "lunch[name]", with: lunch.name
+    fill_in "date", with: lunch.date
+    fill_in "time", with: lunch.time
+    select lunch.price, from: "lunch[price]"
+    fill_in "lunch[location]", with: lunch.location
+    select lunch.category, from: "lunch[category]"
+    fill_in "lunch[description]", with: lunch.description
+    click_button("Add Lunch Group")
+  end
+
   scenario 'an unauthenticated user tries to add a lunch' do
     lunch = FactoryGirl.build(:lunch)
 

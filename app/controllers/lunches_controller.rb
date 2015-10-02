@@ -11,7 +11,6 @@ class LunchesController < ApplicationController
   end
 
   def create
-    binding.pry
 		@lunch = Lunch.new(lunch_params )
     @lunch.date = params[:date]
     @lunch.time = params[:time]
