@@ -11,6 +11,7 @@ class LunchesController < ApplicationController
   end
 
   def create
+    binding.pry
 		@lunch = Lunch.new(lunch_params )
     @lunch.date = params[:date]
     @lunch.time = params[:time]
@@ -18,7 +19,7 @@ class LunchesController < ApplicationController
 			flash[:notice] =  'Lunch Successfully Added!'
 			redirect_to @lunch
 		else
-			flash[:notice] =  'Fill that out.'
+			flash[:error] = @lunch.errors.full_messages.join(". ")
 			render :new
 		end
 	end
