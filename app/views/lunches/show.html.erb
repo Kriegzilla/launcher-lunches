@@ -27,6 +27,16 @@
                 </ul>
               </div>
             </div>
+            <div class="row">
+              <div class="small-12 columns">
+                <ul class="large-block-grid-2">
+                  <h3>Attending Launchers:</h3>
+                  <% @lunch.users.each do |user| %>
+                  <li><%= user.email %> </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
